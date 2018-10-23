@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity implements DYListenerItf,DYR
         Log.d("DYExampleApp","RCOM call returned, WidgetID: " + widgetID + ", data: " + (jsonArray != null ? jsonArray.toString() : "Empty data"));
     }
 
+    public void reportClickToDY(String SKU){
+        DYApi.getInstance().trackRecomItemClick(RCOM_WIDGET_ID,SKU);
+    }
+
+    public void reportRIMPToDY(String[] SKUs){
+        DYApi.getInstance().trackRecomItemRealImpression(RCOM_WIDGET_ID, SKUs);
+    }
+
+
     @Override
     public void experimentsReadyWithState(DYExperimentsState dyExperimentsState) {
 
