@@ -1,19 +1,18 @@
-package com.example.dyexample;
+package com.example.dyexample.utils;
 
 import android.app.Application;
-import android.content.res.Configuration;
 
 import com.dynamicyield.dyapi.DYApi;
 
 public class ExampleApplication extends Application {
 
-    private String mSecretKey = YOUR_SECRET_KEY;
+    private final String SECRET_KEY = YOUR_SECRET_HERE;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        DYApi.setContextAndSecret(getApplicationContext(),mSecretKey);
+        DYApi.setContextAndSecret(getApplicationContext(),SECRET_KEY);
 
     }
 
