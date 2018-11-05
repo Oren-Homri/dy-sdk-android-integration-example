@@ -20,8 +20,10 @@ import org.json.JSONObject;
 public class MainActivity extends FragmentActivity implements DYListenerItf {
 
 
+    protected final DYPageContext DY_PAGE_CONTEXT= new DYPageContext("en_US",DYPageContext.HOMEPAGE,null);
+
+
     private ViewPager mTab;
-    private ExampleFragmentPagerAdapter mTabAdapter;
     private ProgressDialog mProgress;
 
     @Override
@@ -33,12 +35,14 @@ public class MainActivity extends FragmentActivity implements DYListenerItf {
 
         initiateTheTab();
 
-        DYApi.getInstance().setListener(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        DYApi.getInstance().setListener(this);
+        DYApi.getInstance().trackPageView("Homepage",DY_PAGE_CONTEXT);
     }
 
 
@@ -94,7 +98,7 @@ public class MainActivity extends FragmentActivity implements DYListenerItf {
 
     }
 
-    //***** Helper functions *****//
+    //***** FragmentHelper functions *****//
     private void hideWaitingForDY(String state){
 
         showToast("Got respond from DY: " + state);
@@ -114,10 +118,10 @@ public class MainActivity extends FragmentActivity implements DYListenerItf {
 
         String tabTitles[] = new String[] { "Dynamic Content", "Recommendation"};
 
-        mTabAdapter = new ExampleFragmentPagerAdapter(getSupportFragmentManager(),tabTitles);
+        ExampleFragmentPagerAdapter tabAdapter = new ExampleFragmentPagerAdapter(getSupportFragmentManager(), tabTitles);
 
         mTab = findViewById(R.id.pager);
-        mTab.setAdapter(mTabAdapter);
+        mTab.setAdapter(tabAdapter);
 
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
 
@@ -164,5 +168,5 @@ public class MainActivity extends FragmentActivity implements DYListenerItf {
         });
     }
 
-    //*****End Of Helper functions *****//
+    //*****End Of FragmentHelper functions *****//
 }

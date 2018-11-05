@@ -6,7 +6,7 @@ import com.dynamicyield.dyapi.DYApi;
 
 public class ExampleApplication extends Application {
 
-    private final String SECRET_KEY = YOUR_SECRET_HERE;
+    private final String SECRET_KEY = "bae63ca7ed589740347dd8fb";
 
     @Override
     public void onCreate() {

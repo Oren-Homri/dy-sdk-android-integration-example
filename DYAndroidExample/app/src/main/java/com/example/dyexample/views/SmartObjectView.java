@@ -13,7 +13,7 @@ import com.dynamicyield.engine.DYPageContext;
 import com.example.dyexample.R;
 
 
-public class SmartObjectView extends Helper {
+public class SmartObjectView extends FragmentHelper {
 
     private Button mShowDCOnWebView;
     private Button mShowDCOnImageView;
@@ -33,21 +33,15 @@ public class SmartObjectView extends Helper {
 
         configureVars(view);
 
+        mPageName = "smartObject";
+
+
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        //Report Page Viewed when the user arrived
-        DYApi.getInstance().trackPageView(DY_PAGE_NAME,DY_PAGE_CONTEXT);
-
     }
 
     private void fillImageViewFromDY(ImageView imageView) {
 
-        String dynamicContentID = YOUR_DYNAMIC_CONTENT_ID;
+        String dynamicContentID = "imageContent";
 
         //Call DY to load Dynamic Content with ID "dynamicContentID" into "mDCImageView"
         DYApi.getInstance().loadSmartObject(mDCImageView,dynamicContentID,"https://www.gstatic.com/webp/gallery/4.jpg");
@@ -57,7 +51,7 @@ public class SmartObjectView extends Helper {
     }
 
     private void fillWebViewFromDY(WebView webView) {
-        String dynamicContentID = YOUR_DYNAMIC_CONTENT_ID;
+        String dynamicContentID = "htmlContent";
 
         //Call DY to load Dynamic Content with ID "dynamicContentID" into "mDCWebView"
         DYApi.getInstance().loadSmartObject(mDCWebView,dynamicContentID,"https://www.gstatic.com/webp/gallery/4.jpg");

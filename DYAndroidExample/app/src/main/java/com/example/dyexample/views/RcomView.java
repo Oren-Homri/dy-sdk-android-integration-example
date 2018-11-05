@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dynamicyield.dyapi.DYApi;
-import com.dynamicyield.engine.DYPageContext;
 import com.dynamicyield.engine.DYRecommendationListenerItf;
 import com.example.dyexample.R;
 import com.example.dyexample.utils.DownloadImageTask;
@@ -19,10 +18,9 @@ import com.example.dyexample.utils.DownloadImageTask;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class RcomView extends Helper implements DYRecommendationListenerItf {
+public class RcomView extends FragmentHelper implements DYRecommendationListenerItf {
 
-    private final String RCOM_WIDGET_ID = YOUR_WIDGET_ID_HERE;
-    private final DYPageContext DY_PAGE_CONTEXT= new DYPageContext("en_US",DYPageContext.HOMEPAGE,null);
+    private final String RCOM_WIDGET_ID = "39594";
 
     private TextView mRcomText;
     private Button mCallRcomButton;
@@ -35,6 +33,8 @@ public class RcomView extends Helper implements DYRecommendationListenerItf {
         View view = inflater.inflate(R.layout.rcom_frag, container, false);
 
         configureVars(view);
+
+        mPageName = "rcom";
 
         return view;
     }
@@ -79,7 +79,7 @@ public class RcomView extends Helper implements DYRecommendationListenerItf {
 
     }
 
-    //***** Helper functions *****//
+    //***** FragmentHelper functions *****//
 
     private void configureVars(View android) {
         mCallRcomButton = (Button) android.findViewById(R.id.rcomButton);
